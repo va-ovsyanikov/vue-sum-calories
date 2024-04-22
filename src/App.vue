@@ -1,20 +1,7 @@
-<script lang="ts">
-interface ICalories {
-  protein: number;
-  fats: number;
-  carbohydrates: number;
-  kilocalories: number;
-  weight: number;
-}
-enum ERulesCalories {
-  protein = 168,
-  fats = 75,
-  carbohydrates = 225,
-  kilocalories = 2250,
-}
-</script>
 <script setup lang="ts">
 import { reactive, ref, watch, onMounted } from 'vue';
+import { type ICalories } from '@/interfaces';
+import { ERulesCalories } from '@/enums';
 const key = ref(0);
 const totalCalories = ref({} as ICalories);
 const setCalories = reactive<ICalories>({
