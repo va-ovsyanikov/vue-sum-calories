@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { reactive, ref, watch, onMounted } from 'vue';
 import { type ICalories } from '@/interfaces';
-import { ERulesCalories } from '@/enums';
 import SetCalories from '@/components/SetCalories.vue';
+import ResultsCalories from '@/components/ResultsCalories.vue';
+
 const key = ref(0);
 const totalCalories = ref({} as ICalories);
 const setCalories = reactive<ICalories>({
@@ -52,36 +53,17 @@ onMounted(() => {
 
 <template>
   <main class="inline-block border-2">
-    <SetCalories :setCalories="setCalories" />
-    <button
-      class="bg-sky-600 text-white px-4 py-1 hover:bg-sky-800 transition-all rounded-[0.3rem]"
-      @click="onSetCalories"
-    >
-      Добавить
-    </button>
-    <!-- result calories -->
-    <div class="mt-4 ml-2 p-2" :key="key">
-      <!-- <h3>Результат:</h3> -->
-      <div class="flex mb-2" :class="{ 'text-red-600 !font-bold': totalCalories?.protein > ERulesCalories.protein }">
-        <span class="w-[10rem]">Белки ({{ ERulesCalories.protein }}г.):</span>{{ totalCalories?.protein || 0 }}
-      </div>
-      <div class="flex mb-2" :class="{ 'text-red-600 !font-bold': totalCalories?.fats > ERulesCalories.fats }">
-        <span class="w-[10rem]">Жиры ({{ ERulesCalories.fats }}г.):</span>{{ totalCalories?.fats || 0 }}
-      </div>
-      <div
-        class="flex mb-2"
-        :class="{ 'text-red-600 !font-bold': totalCalories?.carbohydrates > ERulesCalories.carbohydrates }"
+    <div class="mt-4 ml-2 p-2">
+      <SetCalories :setCalories="setCalories" />
+      <button
+        class="bg-sky-600 text-white px-4 py-1 hover:bg-sky-800 transition-all rounded-[0.3rem]"
+        @click="onSetCalories"
       >
-        <span class="w-[10rem]">Углеводы ({{ ERulesCalories.carbohydrates }}г.):</span
-        >{{ totalCalories?.carbohydrates || 0 }}
-      </div>
-      <div
-        class="flex mb-2"
-        :class="{ 'text-red-600 !font-bold': totalCalories?.kilocalories > ERulesCalories.kilocalories }"
-      >
-        <span class="w-[10rem]">Калории ({{ ERulesCalories.kilocalories }}кКал):</span
-        >{{ totalCalories?.kilocalories || 0 }}
-      </div>
+        Добавить
+      </button>
+    </div>
+    <div class="mt-4 ml-2 p-2">
+      <ResultsCalories :totalCalories="totalCalories" />
       <button
         class="bg-red-600 hover:bg-red-800 text-white px-4 py-1 transition-all rounded-[0.3rem]"
         @click="onResetCalories"
