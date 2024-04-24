@@ -40,14 +40,12 @@ const onResetCalories = () => {
     localStorage.removeItem('calories');
     key.value++;
   }
-
-  // totalCalories.value = {};
 };
 watch(key, () => {
-  totalCalories.value = JSON.parse(localStorage.getItem('calories') as string);
+  totalCalories.value = JSON.parse(localStorage.getItem('calories') as string) || {};
 });
 onMounted(() => {
-  totalCalories.value = JSON.parse(localStorage.getItem('calories') as string);
+  totalCalories.value = JSON.parse(localStorage.getItem('calories') as string) || {};
 });
 </script>
 
