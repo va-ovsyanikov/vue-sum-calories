@@ -54,6 +54,9 @@ onMounted(() => {
 <template>
   <main class="inline-block border-2">
     <div class="mt-4 ml-2 p-2">
+      <a class="link link-secondary mb-4 block" href="https://calorizator.ru/" target="_blank"
+        >Рецепты и калорийность продуктов</a
+      >
       <SetCalories :setCalories="setCalories" />
       <button class="btn btn-success text-white h-[2rem] min-h-[2rem] rounded-[0.3rem]" @click="onSetCalories">
         Добавить
