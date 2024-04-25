@@ -17,8 +17,10 @@ defineProps({
     v-for="(val, key) in EDataCalories"
     :key="key"
   >
-    <span v-if="val !== EDataCalories.weight" class="w-[10rem]">{{ val }} ({{ ERulesCalories[key as any] }}г.):</span>
-    <span v-if="val !== EDataCalories.weight">{{ totalCalories[key] || 0 }}</span>
+    <span v-if="val !== EDataCalories.weight && val !== EDataCalories.name" class="w-[10rem]"
+      >{{ val }} ({{ ERulesCalories[key as any] }}г.):</span
+    >
+    <span v-if="val !== EDataCalories.weight && val !== EDataCalories.name">{{ totalCalories[key] || 0 }}</span>
   </div>
 </template>
 <style scoped></style>
